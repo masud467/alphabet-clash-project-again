@@ -21,9 +21,9 @@
             </div>
         </section>
         <!-- play ground section -->
-        <section id="play-ground" class="hidden">
+        <section id="play-ground" class="hidden play-ground">
             <div class="flex flex-col items-center gap-20 pt-20">
-                <div class="artboard artboard-horizontal phone-6 border-[20px] rounded-2xl border-[#010313CC] bg-[#FFFFFFB3]">
+                <div id="art-board" class="artboard artboard-horizontal phone-6 border-[20px] rounded-2xl border-[#010313CC] bg-[#FFFFFFB3]">
                     <div class="flex justify-center">
                         <p class="text-white bg-[#2F2941] px-6 pb-4 rounded-b-xl">Don't watch keyboard  while playing...</p>
                     </div>
@@ -91,6 +91,20 @@
                 <button onclick=" play()" class="btn font-bold">Play Again</button>
                 <p>Practice will make you Pro</p>
             </div>
+        </section>
+        <!-- modal section -->
+        <section >
+            <!-- You can open the modal using ID.showModal() method -->
+            <!-- <button class="btn" onclick="my_modal.showModal()" >open modal</button>
+            <dialog id="my_modal" class="modal"> -->
+                <div id="modal-box1" class="modal-box absolute left-2 top-2  hidden">
+                    <form method="dialog">
+                       <button onclick="modalClose()" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                   <h3 class="font-bold text-lg">Hello!</h3>
+                   <p class="py-4">Press ENTER key to close</p>
+                </div>
+            </dialog>
         </section>
     </main>
     <script src="scripts/utility.js"></script>

@@ -10,6 +10,10 @@ const audio = new Audio();
 
 let isGamePlay = false
 
+const artBoard = document.getElementById('art-board')
+
+const modalBox = document.getElementById('modal-box1')
+
 function handleKeyboardButtonPressed(event){
     if(isGamePlay === false) return
     const playPressed = event.key
@@ -41,12 +45,19 @@ function handleKeyboardButtonPressed(event){
     else{
         audio.src='audio/wrong-answer.mp3';
         audio.play()
+
+       
+
         console.log('you lost your life')
         const currentLife = getTextElementValueById('current-life');
         const updatedLife = currentLife - 1;
+
+        const updatedPercentage = (updatedLife / 5) * 100;
+        artBoard.style.background = `linear-gradient(#FFFFFFB3 ${updatedPercentage}%,red)`
+
         setTextElementValueById('current-life', updatedLife) 
 
-        
+       
 
         if(updatedLife === 0){
             gameOver()
@@ -92,4 +103,19 @@ function gameOver(){
     removeBackgroundColorById(currentAlphabet)
 
     isGamePlay =false
+
+    artBoard.style.background = "linear-gradient(#FFFFFFB3 100%,red)"
 }
+
+
+function modalOpen(event){
+    if(event.clientY < 15){
+        modalBox.classList.remove('hidden')
+    }
+}
+
+function modalClose(){
+    modalBox.classList.add('hidden')
+}
+
+document.body.onmousemove = modalOpen;
