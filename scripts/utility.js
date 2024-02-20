@@ -30,6 +30,12 @@ function setTextElementValueById(elementId,value){
     element.innerText = value;
 }
 
+function getElementTextById(id){
+    const element = document.getElementById(id);
+    const text = element.innerText;
+    return text;
+}
+
 function getRandomAlphabet(){
     const alphabetSting = 'abcdefghijklmnopqrstuvwxyz';
     const alphabets = alphabetSting.split('');

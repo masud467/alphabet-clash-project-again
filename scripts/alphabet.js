@@ -60,6 +60,7 @@ function play(){
 
     setTextElementValueById('current-score', 0)
     setTextElementValueById('current-life', 5)
+   
 
     continueGame()
 }
@@ -67,7 +68,11 @@ function play(){
 function gameOver(){
     hideElementById('play-ground')
     showElementById('final-score')
+   
 
     const lastScore = getTextElementValueById('current-score')
     setTextElementValueById('last-score', lastScore)
+
+    const currentAlphabet = getElementTextById('current-alphabet')
+    removeBackgroundColorById(currentAlphabet)
 }
