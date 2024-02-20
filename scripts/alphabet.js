@@ -6,8 +6,12 @@
 //     getPlayGround.classList.remove('hidden')
 // }
 
+const audio = new Audio();
+
+let isGamePlay = false
 
 function handleKeyboardButtonPressed(event){
+    if(isGamePlay === false) return
     const playPressed = event.key
     console.log('player pressed', playPressed)
 
@@ -21,18 +25,28 @@ function handleKeyboardButtonPressed(event){
     console.log(playPressed, expectedAlphabet)
     
     if(playPressed === expectedAlphabet){
+
+        audio.src='audio/correct.mp3';
+        audio.play()
+
         const currentScore = getTextElementValueById('current-score');
         const updatedScore = currentScore + 1;
         setTextElementValueById('current-score', updatedScore)
 
         removeBackgroundColorById(expectedAlphabet)
         continueGame()
+
+       
     }
     else{
+        audio.src='audio/wrong-answer.mp3';
+        audio.play()
         console.log('you lost your life')
         const currentLife = getTextElementValueById('current-life');
         const updatedLife = currentLife - 1;
         setTextElementValueById('current-life', updatedLife) 
+
+        
 
         if(updatedLife === 0){
             gameOver()
@@ -62,6 +76,7 @@ function play(){
     setTextElementValueById('current-life', 5)
    
 
+    isGamePlay =true
     continueGame()
 }
 
@@ -75,4 +90,6 @@ function gameOver(){
 
     const currentAlphabet = getElementTextById('current-alphabet')
     removeBackgroundColorById(currentAlphabet)
+
+    isGamePlay =false
 }
